@@ -7,6 +7,7 @@ import GlobalStyle from './components/GlobalStyle';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import OurWork from './pages/OurWork';
+import MovieDetail from './pages/MovieDetail';
 // Importing Nav
 import Nav from './components/Nav';
 // Additional Router Imports
@@ -24,8 +25,13 @@ function App() {
                 <Route path="/" exact>
                     <AboutUs />
                 </Route>
-                <Route path="/work">
+                <Route path="/work" exact>
+                    {/* Work route is exact to allow Movie Detail to load */}
                     <OurWork />
+                </Route>
+                <Route path="/work/:id">
+                    {/* id is dynamic text */}
+                    <MovieDetail />
                 </Route>
                 <Route path="/contact">
                     <ContactUs />
