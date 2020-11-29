@@ -10,6 +10,9 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 // Importing the movie state data
 import { MovieState } from '../movieState';
+// Importing Animations
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../animate';
 
 const MovieDetail = () => {
     // History gives us information on our current location
@@ -37,7 +40,12 @@ const MovieDetail = () => {
         <>
             {/* Only render content when the current movie data is available */}
             {movie && (
-                <Details>
+                <Details
+                    variants={pageAnimation} 
+                    initial="hidden" 
+                    animate="show"
+                    exit="exit"
+                >
                     <HeadLine>
                         <h2>{movie.title}</h2>
                         <img src={movie.mainImg} alt="Main Movie Image" />
@@ -63,7 +71,8 @@ const MovieDetail = () => {
 }
 
 // * Styled Component
-const Details = styled.div`
+// * Using Framer Motion with Details
+const Details = styled(motion.div)`
     color: white;
 `;
 

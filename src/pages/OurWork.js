@@ -9,10 +9,20 @@ import goodtimes from '../img/goodtimes-small.png';
 import styled from 'styled-components';
 // Import Link
 import { Link } from 'react-router-dom';
+// Importing Animations
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../animate';
 
 const OurWork = () => {
     return (
-        <Work>
+        // * We can use framer motion with "Work" because of (motion.div) in styles
+        <Work 
+            variants={pageAnimation} 
+            initial="hidden" 
+            animate="show"
+            exit="exit"
+            style={{background: "#fff"}}
+        >
             <Movie>
                 <h2>The Athlete</h2>
                 {/* Line to be animated */}
@@ -41,7 +51,8 @@ const OurWork = () => {
     )
 }
 
-const Work = styled.div`
+// * We use motion.div because this styled component will be animated
+const Work = styled(motion.div)`
     min-height: 100vh;
     /* For Animations */
     overflow: hidden;
