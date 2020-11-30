@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // Importing Animations
 import { motion } from 'framer-motion';
-import { pageAnimation } from '../animate';
+import { pageAnimation, fade, photoAnim, lineAnim, slider, sliderContainer } from '../animate';
 
 const OurWork = () => {
     return (
@@ -23,12 +23,22 @@ const OurWork = () => {
             exit="exit"
             style={{background: "#fff"}}
         >
+            {/* For the animated background using a different container
+            This lets us stagger them differently from pageAnimation */}
+            <motion.div variants={sliderContainer}>
+                <Frame1 variants={slider}></Frame1>
+                <Frame2 variants={slider}></Frame2>
+                <Frame3 variants={slider}></Frame3>
+                <Frame4 variants={slider}></Frame4>
+            </motion.div>
             <Movie>
-                <h2>The Athlete</h2>
+                <motion.h2 variants={fade}>The Athlete</motion.h2>
                 {/* Line to be animated */}
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-athlete">
-                    <img src={athlete} alt="The Athlete" />
+                    <Hide>
+                        <motion.img variants={photoAnim} src={athlete} alt="The Athlete" />
+                    </Hide>
                 </Link>
             </Movie>
             <Movie>
@@ -66,7 +76,7 @@ const Movie = styled.div`
     padding-bottom: 10rem;
     .line {
       height: 0.5rem;
-      background: #cccccc;
+      background: #23d997;
       margin-bottom: 3rem;  
     }
     img {
@@ -75,6 +85,36 @@ const Movie = styled.div`
         /* To prevent image squishing */
         object-fit: cover;
     }
+`;
+
+const Hide = styled.div`
+    overflow: hidden;
+`;
+
+// Frame Animation
+const Frame1 = styled(motion.div)`
+    position: fixed;
+    left: 0;
+    /* Top 10% to allow nav to be seen */
+    top: 10%;
+    width: 100%;
+    height: 100vh;
+    background: #fffebf;
+    /* Cover the rest of the screen */
+    z-index: 2;
+`;
+
+// Copying in the styles from Frame1
+const Frame2 = styled(Frame1)`
+    background: #ff8efb;
+`;
+
+const Frame3 = styled(Frame1)`
+    background: #8ed2ff;
+`;
+
+const Frame4 = styled(Frame1)`
+    background: #8effa0;
 `;
 
 export default OurWork;

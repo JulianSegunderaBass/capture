@@ -20,7 +20,6 @@ export const pageAnimation = {
     // Exit runs when the component is "closed"
     exit: {
         opacity: 0,
-        y: 300,
         transition: {
             duration: 0.5,
         } 
@@ -64,6 +63,49 @@ export const photoAnim = {
         transition: {
             ease: "easeOut",
             duration: 0.75
+        }
+    }
+}
+
+export const lineAnim = {
+    // Note: percentages need to be wrapped with quotes
+    hidden: {
+        width: '0%'
+    },
+    show: {
+        width: '100%',
+        transition: {
+            duration: 1
+        }
+    }
+}
+
+// For background animations in OurWork
+export const slider = {
+    hidden: {
+        x: '-130%',
+        skew: '45deg'
+    },
+    show: {
+        x: '100%',
+        skew: '0deg',
+        transition: {
+            ease: 'easeOut',
+            duration: 1
+        }
+    }
+}
+
+// A separate parent Framer container for the slider
+export const sliderContainer = {
+    hidden: {
+        opacity: 1
+    },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            ease: 'easeOut'
         }
     }
 }
