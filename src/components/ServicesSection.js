@@ -10,10 +10,21 @@ import teamwork from '../img/teamwork.svg';
 import home2 from '../img/home2.png';
 // Styling Import
 import styled from 'styled-components';
+// Importing Framer Motion and Animations
+import { motion } from 'framer-motion';
+import { scrollReveal } from '../animate';
+// Importing our custom useScroll component for scroll animations
+import { useScroll } from './useScroll';
 
 const ServicesSection = () => {
+
+    // A custom hook using the returned parameters from useScroll
+    const [element, controls] = useScroll();
+
     return (
-        <Services>
+        // Ref is used to connect to useInView via useScroll
+        // Setting animate to controls hands control over to useInView
+        <Services variants={scrollReveal} animate={controls} initial="hidden" ref={element}>
             {/* Text Section */}
             <Description>
                 <h2>High <span>quality</span> services</h2>
@@ -58,7 +69,7 @@ const ServicesSection = () => {
 }
 
 // Styled Component
-const Services = styled.div`
+const Services = styled(motion.div)`
     min-height: 90vh;
     display: flex;
     align-items: center;
