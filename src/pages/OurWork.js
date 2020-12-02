@@ -11,9 +11,20 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // Importing Animations
 import { motion } from 'framer-motion';
-import { pageAnimation, fade, photoAnim, lineAnim, slider, sliderContainer } from '../animate';
+import { pageAnimation, fade, photoAnim, lineAnim, slider, sliderContainer, scrollReveal } from '../animate';
+// Importing our custom useScroll component for scroll animations
+import { useScroll } from '../components/useScroll';
+// Import to automatically scroll to top upon loading
+import ScrollTop from '../components/ScrollTop';
 
 const OurWork = () => {
+
+    // We have two hooks because there are 
+    // multiple movies being animated on the page
+    // as opposed to just one component
+    const [element, controls] = useScroll();
+    const [element2, controls2] = useScroll();
+
     return (
         // * We can use framer motion with "Work" because of (motion.div) in styles
         <Work 
@@ -23,6 +34,8 @@ const OurWork = () => {
             exit="exit"
             style={{background: "#fff"}}
         >
+            {/* Extra component to scroll to top of page upon loading */}
+            <ScrollTop />
             {/* For the animated background using a different container
             This lets us stagger them differently from pageAnimation */}
             <motion.div variants={sliderContainer}>
@@ -41,18 +54,18 @@ const OurWork = () => {
                     </Hide>
                 </Link>
             </Movie>
-            <Movie>
+            <Movie ref={element} variants={fade} animate={controls} initial="hidden">
                 <h2>The Racer</h2>
                 {/* Line to be animated */}
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/the-racer">
                     <img src={theracer} alt="The Racer" />
                 </Link>
             </Movie>
-            <Movie>
+            <Movie ref={element2} variants={fade} animate={controls2} initial="hidden">
                 <h2>Good Times</h2>
                 {/* Line to be animated */}
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to="/work/good-times">
                     <img src={goodtimes} alt="Good Times" />
                 </Link>
@@ -72,7 +85,7 @@ const Work = styled(motion.div)`
     }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
     padding-bottom: 10rem;
     .line {
       height: 0.5rem;

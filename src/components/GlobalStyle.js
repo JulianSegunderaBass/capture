@@ -11,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
     body {
         background: #1b1b1b;
         font-family: 'Inter', sans-serif;
+        /* This overflow prevents side scrolling */
+        overflow-x: hidden;
     }
     button {
         font-weight: bold;

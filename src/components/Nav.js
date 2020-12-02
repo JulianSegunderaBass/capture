@@ -30,6 +30,10 @@ const StyledNav = styled.nav`
     align-items: center;
     padding: 1rem 10rem;
     background: #282828;
+    /* Sticky position makes sure nav follows the sliding animation */
+    position: sticky;
+    top: 0;
+    z-index: 5;
     a {
         color: white;
         text-decoration: none;
