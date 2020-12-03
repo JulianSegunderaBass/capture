@@ -108,6 +108,7 @@ const Cards = styled.div`
     }
     @media (max-width: 850px) {
         flex-direction: row;
+        padding-left: 5rem;
     }
 `;
 
