@@ -53,6 +53,14 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.4rem;
         line-height: 150%;
     }
+
+    // * Media Queries
+
+    html {
+        @media (max-width: 1300px) {
+            font-size: 75%;
+        }
+    }
 `;
 
 export default GlobalStyle;

@@ -11,9 +11,9 @@ const Nav = () => {
         <StyledNav>
             <h1><Link to="/" id="logo">Capture</Link></h1>
             <ul>
-                <li><Link to="/">1. About Us</Link></li>
-                <li><Link to="/work">2. Our Work</Link></li>
-                <li><Link to="/contact">3. Contact Us</Link></li>
+                <li><Link to="/">About Us</Link></li>
+                <li><Link to="/work">Our Work</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
             </ul>
         </StyledNav>
     )
@@ -52,6 +52,25 @@ const StyledNav = styled.nav`
        padding-left: 10rem;
        /* For line animations */
        position: relative;
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        padding: 1rem 1rem;
+        #logo {
+            /* Inline block is needed so padding/margin
+            can be applied to the a tag, which by default is inline */
+            display: inline-block;
+            margin: 1rem;
+        }
+        ul {
+            padding: 2rem;
+            justify-content: space-around;
+            width: 100%;
+            li {
+                padding: 0;
+            }
+        }
     }
 `;
 

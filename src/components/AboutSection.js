@@ -54,6 +54,12 @@ const About = styled.div`
     justify-content: space-between;
     padding: 5rem 10rem;
     color: white;
+    @media (max-width: 850px) {
+        display: block;
+        /* Padding here lets the image take up more width */
+        padding: 2rem 2rem;
+        text-align: center;
+    }
 `;
 
 const Description = styled.div`
@@ -63,6 +69,12 @@ const Description = styled.div`
     z-index: 2;
     h2 {
         font-weight: lighter;
+    }
+    @media (max-width: 850px) {
+        padding: 0;
+        button {
+            margin: 2rem 0rem 5rem 0rem;
+        }
     }
 `;
 
