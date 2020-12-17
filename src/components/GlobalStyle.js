@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     }
     span {
         font-weight: bold;
-        color: #fde00d;
+        color: #23d997;
     }
     p {
         padding: 3rem 0rem;
